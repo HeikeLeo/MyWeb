@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>欢迎 - Leo的个人网站</title>
+		<style>
+			:root{/*定义变量*/
+				--a:1;
+			}
+			html,body{
+				margin: 0;
+				padding: 0;
+				width: 100%;
+				height: 100%;
+			}
+			body{
+				background-color: black;
+			}
+			*{
+				color: white;
+			}
+			.pages{
+				width: 100%;
+				height: 100%;
+				opacity: 1;
+			}
+			.center{
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+
+			#welcome{
+				text-align: center;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+			}
+			#user_pic{
+				margin-bottom: 8vh;
+				
+			}
+			#welcome button{
+				border: 1px white solid;
+				background-color: transparent;
+				padding: 5px 10px 5px 10px;
+				font-size: 150%;
+			}
+			#welcome button:hover{
+				background-color: gray;
+			}
+
+			#menu header{
+				background-color: dimgray;
+				display: flex; /* 使用 flexbox 布局 */
+				justify-content: space-between; /* 使子元素分别位于容器的两端 */
+				align-items: center; /* 垂直居中对齐子元素 */
+			}
+			#menu header #right-content{
+				display: flex; /* 使用 flexbox 布局 */
+				align-items: center; /* 垂直居中对齐子元素 */
+				white-space: nowrap; /* 防止文本换行 */;
+			}
+			#menu header p{
+				margin: 0;
+				padding: 5px 0px 5px 15px;
+				font-size: 100%;
+			}
+			#menu header #datetime{
+				margin-right: 5%;
+				padding: 0px 15px 0px 15px;
+				font-size: 100%;
+			}
+			#menu header #weather{
+				padding: 0px 5px 0px 5px;
+				font-size: 100%;
+			}
+			#menu header #weather,#menu header #datetime {
+				/* 防止自身文字换行 */
+				white-space: nowrap; 
+				/* 防止内容溢出时被截断 */
+				overflow: visible; 
+				/* 文本溢出时显示省略号，可根据需求选择是否添加 */
+				/* text-overflow: ellipsis;  */
+			}
+
+			/* #menu header button{
+			} */
+
+			.folder {
+				display: inline-block;
+				margin: 5%;
+				text-align: center;
+				cursor: pointer;
+			}
+
+			.folder-icon {
+				font-size: 10vh;
+			}
+
+			.folder-name {
+				font-size: 80%;
+			}
+			#menu {
+				display: flex;
+				flex-direction: column;
+				height: 100%; /* 确保 #menu 占据可用高度 */
+			}
+			#menu header {
+				/* 保持原有的样式，确保 header 正常显示 */
+				background-color: dimgray;
+				display: flex; 
+				justify-content: space-between; 
+				align-items: center; 
+				/* 固定 header 的高度，防止被 flex 布局影响 */
+				flex-shrink: 0; 
+			}
+			#menu #menu-content {
+				width: 75%; /* 确保 #menu-content 宽度不超过父容器宽度 */;
+				
+				align-items: center;
+				background-color: gray;
+				/* 让 #menu-content 自动填充剩余空间 */
+				flex-grow: 1; 
+				margin: auto;
+				text-align: center;
+			}
+
+			#cover {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, 0.5); /* 半透明黑色 */
+				z-index: 999; /* 确保覆盖层在其他内容之上 */
+				display: none; /* 默认隐藏 */
+			}
+
+			#tools {
+				display: none;
+
+				padding: 20px;
+				background-color: gray;
+				margin: 0 auto;
+				width: 75%;
+				height: calc(100% - 40px);
+				overflow-y: auto;
+			}
+
+			#tools h3 {
+				font-size: 1.2em;
+				background-color: dimgray;
+				padding: 5px 15px;
+				margin: 20px 0 10px;
+			}
+
+			#tools a {
+				display: block;
+				padding: 10px 15px;
+				text-decoration: none;
+				cursor: pointer;
+				text-align: center;
+			}
+
+			#tools a:hover {
+				background-color: rgba(255, 255, 255, 0.1);
+			}
+
+		</style>
+	</head>
+	<body>
+		<div class="pages center" id="welcome">
+			<div id="user_pic">
+				<svg t="1743416333274" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2617" width="150" height="150"><path d="M515.541449 7.082899c-280.359429 0-508.458551 228.120391-508.458551 508.458551s228.120391 508.458551 508.458551 508.458551 508.458551-228.120391 508.458551-508.458551S795.900879 7.082899 515.541449 7.082899zM515.541449 981.864196c-257.132626 0-466.301477-209.190121-466.301477-466.322747 0-257.132626 209.168851-466.322747 466.301477-466.322747s466.301477 209.190121 466.301477 466.322747S772.674075 981.864196 515.541449 981.864196zM614.574414 524.177056 614.574414 524.177056c47.751075-31.96876 79.230625-86.398604 79.230625-148.187857 0-98.437405-79.804915-178.24232-178.24232-178.24232-98.437405 0-178.24232 79.804915-178.24232 178.24232 0 61.810523 31.479551 116.219097 79.251895 148.187857-100.266622 39.519598-171.244501 137.170014-171.244501 251.453545 0 0.23397 0 0.446669 0.02127 0.659369 0 0.04254-0.02127 0.10635-0.02127 0.14889 0 15.612155 12.65563 28.246516 28.267786 28.246516 15.590885 0 21.886796-12.63436 21.886796-28.246516 0-0.340319-0.08508-0.659369-0.10635-1.020958 0.10635-118.005774 102.159649-219.995264 220.207964-219.995264 118.112124 0 220.207964 102.095839 220.207964 220.207964 0 0.14889-1.467628 29.054774 21.971875 29.054774 15.505806 0 28.076356-12.57055 28.076356-28.055086 0-0.06381-0.02127-0.12762-0.02127-0.2127 0-0.25524 0.02127-0.510479 0.02127-0.786989C785.797645 661.34707 714.798496 563.696654 614.574414 524.177056zM515.541449 510.734437c-74.402343 0-134.723968-60.321625-134.723968-134.723968 0-74.423613 60.321625-134.723968 134.723968-134.723968 74.423613 0 134.723968 60.321625 134.723968 134.723968S589.943792 510.734437 515.541449 510.734437z" fill="#e6e6e6" p-id="2618"></path></svg>
+			</div>
+			<button onclick="tab(welcome,menu)">欢迎 - 进入网页</button>
+			<p>你好，我是LeoSu，<br>
+				欢迎来到我的个人网站，<br>在这里，你可以找到我分享的各种资源，包括工具、精美照片等。</p>
+		</div>
+		<div class="pages" id="menu">
+			<header>
+				<p>Leo<b>S</b>u的个人网站</p>
+				<button onclick="back()">返回</button>
+				<div id="right-content">
+					<div id="weather">示例</div>
+					<div id="datetime"></div>
+				</div>
+			</header>
+			<div id="menu-content">
+				<div class="folder" onclick="tab(menu_content,tools)">
+					<div class="folder-icon">📁</div>
+					<div class="folder-name">工具</div>
+				</div>
+				<div class="folder" onclick="tab(menu_content,tools_link)">
+					<div class="folder-icon">📁</div>
+					<div class="folder-name">站外工具</div>
+				</div>
+				<div class="folder">
+					<div class="folder-icon">📁</div>
+					<div class="folder-name">精美照片</div>
+				</div>
+				<div class="folder">
+					<div class="folder-icon">📁</div>
+					<div class="folder-name">我的文件夹</div>
+				</div>
+				<div class="folder">
+					<div class="folder-icon">📁</div>
+					<div class="folder-name">我的文件夹</div>
+				</div>
+			</div>
+			<div class="page tools" id="tools"></div>
+			<div class="page tools" id="tools-link">
+				<input type="text" id="search-input" placeholder="搜索网站名称">
+				<select id="category-select">
+					<option value="">全部分类</option>
+				</select>
+			</div>
+		</div>
+		
+		<!-- <div class="pages floder-content" id="cover"></div> -->
+	</body>
+	<script>// 定义变量
+		// var page_css = []
+		// for (var i=0;i<document.getElementsByClassName("pages").length;i++){
+		// 	page_css.push(window.getComputedStyle(document.getElementsByClassName("pages")[i]))
+		// } 
+		var now_page
+		var welcome = document.getElementById("welcome");
+		var menu = document.getElementById("menu");
+		var menu_content = document.getElementById("menu-content");
+		var tools = document.getElementById("tools");
+		var tools_link = document.getElementById("tools-link");
+	</script>
+	<script src="./js/time.js"></script><!--时间-->
+	<script>// 函数
+		function getQueryParams() {// 获取URL参数
+			const params = new URLSearchParams(window.location.search);
+			return Object.fromEntries(params.entries());
+		}
+		function getCssValue(element,css){// 获取元素的css属性值
+			return window.getComputedStyle(element).getPropertyValue(css)	
+		}
+		function tab(page,change){// 切换页面
+			page.style.display = "none";
+			// change.style.display = getCssValue(change,"display");
+			if (change==menu){
+				change.style.display = "flex"
+			} else if (change==tools){
+				change.style.display = "block"
+			} else if (change==tools_link){
+				change.style.display = "block"
+			} else if (change==welcome){
+				change.style.display = "flex"
+			} else if (change==menu_content){
+				change.style.display = "block"
+			}
+			now_page = change.id;
+		}
+		function back(){// 返回上一页
+			if (now_page=='menu' || now_page=='menu-content'){
+				tab(menu,welcome)
+			} else if (now_page=='tools'){
+				tab(tools,menu_content)	
+			} else if (now_page=='tools-link'){
+				tab(tools_link,menu_content)	
+			}
+		}
+			// 定义生成工具列表的函数
+		function generateToolList(container, list) {
+			if (customCategories) {
+				customCategories.forEach(category => {
+					const categoryHeader = document.createElement('h3');
+					categoryHeader.textContent = category.name;
+					container.appendChild(categoryHeader);
+
+					const categoryTools = list.filter(tool => category.tools.includes(tool.name));
+					categoryTools.forEach(tool => {
+						const toolLink = document.createElement('a');
+						toolLink.textContent = tool.name;
+						container.appendChild(toolLink);
+					});
+				});
+			} else {
+				// 按拼音排序
+				const sortedToolList = [...list].sort((a, b) => a.name.localeCompare(b.name, 'zh-CN'));
+
+				// 创建按拼音分类的列表
+				let currentLetter = '';
+				sortedToolList.forEach(tool => {
+					const firstLetter = tool.name.charAt(0).toLocaleUpperCase('zh-CN');
+					if (firstLetter !== currentLetter) {
+						currentLetter = firstLetter;
+						const letterHeader = document.createElement('h3');
+						letterHeader.textContent = currentLetter;
+						container.appendChild(letterHeader);
+					}
+					const toolLink = document.createElement('a');
+					toolLink.textContent = tool.name;
+					container.appendChild(toolLink);
+				});
+			}
+		}
+
+		// 定义生成工具链接列表的函数
+		async function generateToolLinkList(container) {
+			try {
+				// 读取 XLSX 文件
+				const response = await fetch('./tool_links.xlsx');
+				const arrayBuffer = await response.arrayBuffer();
+				const data = new Uint8Array(arrayBuffer);
+				const workbook = XLSX.read(data, { type: 'array' });
+				const sheetName = workbook.SheetNames[0];
+				const worksheet = workbook.Sheets[sheetName];
+				const jsonData = XLSX.utils.sheet_to_json(worksheet);
+
+				// 获取分类选项
+				const categories = [...new Set(jsonData.map(item => item['B列']))];
+				const categorySelect = document.getElementById('category-select');
+				categories.forEach(category => {
+					const option = document.createElement('option');
+					option.value = category;
+					option.textContent = category;
+					categorySelect.appendChild(option);
+				});
+
+				// 渲染初始列表
+				renderToolLinks(jsonData, container);
+
+				// 添加搜索和筛选事件监听
+				const searchInput = document.getElementById('search-input');
+				if (searchInput && categorySelect) {
+					searchInput.addEventListener('input', () => filterToolLinks(jsonData, container));
+					categorySelect.addEventListener('change', () => filterToolLinks(jsonData, container));
+				}
+			} catch (error) {
+				console.error('读取 XLSX 文件出错:', error);
+			}
+		}
+		// 渲染工具链接列表
+		function renderToolLinks(data, container) {
+			container.innerHTML = '';
+			const groupedData = groupByCategory(data);
+			Object.entries(groupedData).forEach(([category, items]) => {
+				const categoryHeader = document.createElement('h3');
+				categoryHeader.textContent = category;
+				container.appendChild(categoryHeader);
+
+				items.forEach(item => {
+					const toolLink = document.createElement('a');
+					toolLink.textContent = item['A列'];
+					toolLink.href = item['F列'];
+					toolLink.target = '_blank';
+					toolLink.title = `简介: ${item['D列']} | 是否需要加速器: ${item['C列'] === 'T' ? '需要' : '不需要'}`;
+					container.appendChild(toolLink);
+				});
+			});
+		}
+
+		// 按分类分组数据
+		function groupByCategory(data) {
+			return data.reduce((acc, item) => {
+				if (!acc[item['B列']]) {
+					acc[item['B列']] = [];
+				}
+				acc[item['B列']].push(item);
+				return acc;
+			}, {});
+		}
+
+		// 过滤工具链接
+		function filterToolLinks(data, container) {
+			const searchInput = document.getElementById('search-input').value.toLowerCase();
+			const selectedCategory = document.getElementById('category-select').value;
+
+			let filteredData = data;
+			if (selectedCategory) {
+				filteredData = filteredData.filter(item => item['B列'] === selectedCategory);
+			}
+			if (searchInput) {
+				filteredData = filteredData.filter(item => item['A列'].toLowerCase().includes(searchInput));
+			}
+
+			renderToolLinks(filteredData, container);
+		}
+
+		// 确保 DOM 加载完成后再执行代码
+		document.addEventListener('DOMContentLoaded', function() {
+			// 生成 tools-link 页面内容
+			const tools_link = document.getElementById('tools-link');
+			if (tools_link) {
+				generateToolLinkList(tools_link);
+			}
+		});
+	</script>
+	<script>// 页面加载（测试用）
+		tab(welcome,menu);
+		tab(menu_content,tools_link);
+	</script>
+	<script>// 工具页面
+			// 定义 tools 页面的工具列表
+		const toolList = [
+			{ name: '闹钟' },
+			{ name: '日历' },
+			{ name: '计时器' },
+			{ name: '秒表' }
+		];
+
+		// 生成 tools 页面内容
+		generateToolList(tools, toolList,customCategories = null);
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+	<script>// 工具链接页
+		// 生成 tools-link 页面内容
+    	generateToolLinkList(tools_link);
+	</script>
+</html>
